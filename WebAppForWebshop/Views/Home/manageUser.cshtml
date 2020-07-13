@@ -1,0 +1,41 @@
+﻿@model WebAppForWebshop.Models.ApplicationUser
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>User Management Page</h1>
+
+
+
+    @if (Model != null)
+    {
+        <div>
+            <p>Username: @Model.UserName</p> <p>ID: @Model.Id</p> 
+            <form asp-controller="Home" asp-action="UpdateUser" method="POST">
+                <label for="uid">
+                    <input type="hidden" id="uid" name="uid" value="@Model.Id" />
+                </label>
+                <label for="fname">
+                    <input type="text" id=" fname" name="fname" value="@Model.FirstName" />
+                </label>
+                <label for="lname">
+                    <input type="text" id=" lname" name="lname" value="@Model.LastName" />
+                </label>
+                <label for="adr">
+                    <input type="text" id="adr" name="adr" value="@Model.Address" />
+                </label>
+                <input type="submit" id=" UpdateUser" name="UpdateUser" value="Update User" />
+            </form>
+            @*<form action="UpdateUser" method="POST">
+                    <input type="hidden" id="uid" name="uid" value="@Model.Id" />
+                    <label for="username">
+                        <input type="text" id="username" name="username" value="@Model.UserName" />
+                    </label>
+                    <input type="submit" id="upduser" name="upduser" value="UPDATE" />
+                </form>*@
+        </div>
+        <div>
+            @Html.ActionLink("DELETE", "RemoveUser", "Home", new { Model.Id }, new { @class = "btn btn-danger" })
+        </div>
+    }

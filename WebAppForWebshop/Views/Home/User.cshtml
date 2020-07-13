@@ -1,0 +1,42 @@
+﻿@model WebAppForWebshop.Models.ApplicationUser
+
+<div>
+    @if (Model != null)
+    {
+        @if (Model.userList != null)
+        {
+            <table>
+                <tr><th>Username</th><th>UserId</th><th>Click</th></tr>
+                @foreach (var user in Model.userList)
+                {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Id</td>
+                <td>@Html.ActionLink("MANAGE", "ManageUser", "Home", new {id = user.Id }, new { @class = "btn btn-primary" })</td>
+            </tr>
+            
+        }
+                </table>
+            }
+    }
+    </div>
+<div>
+    <form action="AddUser" method="POST">
+        <label for="username">
+            <input type="text" id="username" name="username" value="email username..." />
+        </label>
+        <label for="pword">
+            <input type="text" id="pword" name="pword" value="password..."/>
+        </label>
+        <label for="fname">
+            <input type="text" id=" fname" name="fname" value="firstname.." />
+        </label>
+        <label for=" lname">
+            <input type="text" id=" lname" name="lname" value="lastname.." />
+        </label>
+        <label for=" adr">
+            <input type="text" id="adr" name="adr" value="Address.." />
+        </label>
+        <input type="submit" id=" adduser" name="adduser" value="Add User" />
+    </form>
+</div>

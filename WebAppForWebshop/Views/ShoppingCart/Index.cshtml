@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebAppForWebshop.Models.CartAndProduct>
+
+
+
+@{ ViewData["Title"] = "Shopping Cart"; }
+
+
+
+<h1>Shopping Cart</h1> @foreach (var item in Model)
+{
+    <p>@Html.DisplayNameFor(model => model.CartId)</p>
+    <p>@Html.DisplayFor(modelItem => item.CartId)</p>
+    break;
+}
+
+
+
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CartId)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePerItem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CartId)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    <img src=" @Html.DisplayFor(modelItem => item.ProductImage)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PricePerItem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ItemId">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
+                    @*<a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@item.Id">Add To Cart</a>*@
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    @foreach (var item in Model)
+    {
+        @Html.ActionLink("GO TO CHECKOUT", "Checkout", "Order", new { item.CartId }, new { @class = "btn btn-danger" })
+        break;
+    }
+
+</div>
