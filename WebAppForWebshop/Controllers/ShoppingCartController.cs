@@ -145,7 +145,20 @@ namespace WebAppForWebshop.Controllers
 
 
 
-
+        // deleting all items in the shopping Cart
+        public IActionResult EmptyCart()
+        {
+            ShoppingCartId = GetCartId();
+            var cartItems = _db.ShoppingCartItems.Where(
+                c => c.CartId == ShoppingCartId);
+            foreach (var cartItem in cartItems)
+            {
+                _db.ShoppingCartItems.Remove(cartItem);
+            }
+            // Save changes.             
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
         public string GetCartId()
@@ -172,7 +185,23 @@ namespace WebAppForWebshop.Controllers
         }
 
 
+        public IActionResult ChangeAmount(string id, string button)
+        {
+            var item = _db.ShoppingCartItems.Find(id);
+            if (button == "+")
+                item.Quantity++;
+            else
+                item.Quantity--;
 
+            if (item.Quantity < 1)
+                _db.ShoppingCartItems.Remove(item);
+            else
+                _db.Update(item);
+
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
 
         public List<CartItem> GetCartItems()

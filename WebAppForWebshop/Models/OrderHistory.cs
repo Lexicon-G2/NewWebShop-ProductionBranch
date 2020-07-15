@@ -7,6 +7,8 @@ namespace WebAppForWebshop.Models
 {
     public class OrderHistory
     {
+        public List<OrderHistory> listOrderHistory = new List<OrderHistory>();
+        public List<OrderHistory> finalHistoryList = new List<OrderHistory>();
         public int OrderId { get; set; }
 
         public string CustomerId { get; set; }

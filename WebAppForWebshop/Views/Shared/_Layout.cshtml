@@ -1,7 +1,5 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <title>Group 2 Project</title>
     <meta charset="utf-8">
@@ -11,27 +9,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
-
     <title>Group2</title>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
     <!-- Main Stylesheet -->
-
 
     <link rel="stylesheet" href="~/themes/css/style.css">
     <link rel="stylesheet" href="~/themes/css/bootstrap.min.css">
-
     <link href="~/css/Custom.css" rel="stylesheet" />
-
 
 </head>
 
-
 <body>
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -41,7 +32,6 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">Logo</a>
-
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -49,25 +39,45 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
 
-
                     @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Views" asp-page="/Products/Index">Products</a>
                         </li>*@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
                     </li>
-
                     <li><a href="#">Deals</a></li>
                     <li><a href="#">Stores</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
+
+
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><partial name="_LoginPartial" /></a></li>
-                    <li><a href="#"> Cart</a></li>
+                    <li class="nav-item">
+
+                        @*<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+                            <img class="media-object" src="images/cart.jpg" alt="image" />*@
+
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="Index"> <img class="media-object" src="images/cart.png" alt="image" /></a>
+                        @*<a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart</a>*@
+
+                    </li>
+                    @*<li><a href="#"> Cart</a></li>*@
+
+
+
+
+
                 </ul>
+
+
+
+
             </div>
         </div>
     </nav>
+
+
 
     <div class="jumbotron">
         <div class="container text-center">
@@ -76,22 +86,15 @@
         </div>
     </div>
 
-
-
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
-
         </main>
     </div>
 
 
 
-
-
-
     <footer class="footer section text-center">
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -131,12 +134,11 @@
                             <a href="">PRIVACY POLICY</a>
                         </li>
                     </ul>
-                    <p class="copyright-text">Powered by Group 2</p>
+                    <p-custom class="copyright-text">Powered by Group 2</p-custom>
                 </div>
             </div>
         </div>
     </footer>
-
     <!--
     Essential Scripts
     =====================================-->
@@ -152,11 +154,9 @@
     <script src="~/themes/plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
     <!-- Count Down Js -->
     <script src="~/themes/plugins/SyoTimer/build/jquery.syotimer.min.js"></script>
-
     <!-- Revolution Slider -->
     <script type="text/javascript" src="~/themes/plugins/revolution-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="~/themes/plugins/revolution-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>
-
     <!-- Revolution Slider -->
     <script type="text/javascript" src="~/themes/plugins/revolution-slider/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <script type="text/javascript" src="~/themes/plugins/revolution-slider/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
@@ -170,19 +170,11 @@
     <script type="text/javascript" src="~/themes/plugins/revolution-slider/revolution/js/extensions/revolution.extension.video.min.js"></script>
     <script type="text/javascript" src="~/themes/plugins/revolution-slider/assets/warning.js"></script>
 
-
-
     <!-- Google Mapl -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
     <script type="text/javascript" src="~/themes/plugins/google-map/gmap.js"></script>
-
     <!-- Main Js File -->
     <script src="~/themes/js/script.js"></script>
-
-
-
-
-
 
 
 
@@ -191,8 +183,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
-
-
 
 </body>
 </html>
