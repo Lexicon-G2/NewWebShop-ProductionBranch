@@ -6,7 +6,7 @@
 
 
 
-<h1>Shopping Cart</h1> @foreach (var item in Model)
+<h1>Shopping Cart</h1>  @foreach (var item in Model)
 {
     <p>@Html.DisplayNameFor(model => model.CartId)</p>
     <p>@Html.DisplayFor(modelItem => item.CartId)</p>
@@ -18,8 +18,11 @@
 
 @*<p>
         <a asp-action="Create">Create New</a>
+
+    <table  class="table" id="customers">
+
     </p>*@
-<table class="table">
+<table class="table" id="customers">
     <thead>
         <tr>
             @*<th>
@@ -78,20 +81,31 @@
                     @Html.DisplayFor(modelItem => item.DateCreated)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ItemId">Details</a>
+                    <form asp-action="ChangeAmount">
+
+                        <input type="submit" name="button" value="+" />
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                        <input type="submit" name="button" value="-" />
+                        <input type="hidden" name="id" value="@item.ItemId" />
+                    </form>
+                    @*<a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |*@
+                    @*<a asp-action="Details" asp-route-id="@item.ItemId">Details</a>*@
                     <a asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
                     @*<a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@item.Id">Add To Cart</a>*@
                 </td>
             </tr>
-}
+        }
     </tbody>
 </table>
 
 <div>
     @foreach (var item in Model)
     {
-        @Html.ActionLink("GO TO CHECKOUT", "Checkout", "Order", new { item.CartId }, new { @class = "btn btn-danger" })
+        @Html.ActionLink("GO TO CHECKOUT", "Checkout", "Order", new { item.CartId }, new { @class = "btn-main" })
+        @*@Html.ActionLink("GO TO CHECKOUT", "Checkout", "Order", new { item.CartId }, new { @class = "btn btn-danger" })*@
+
+        <a asp-action="EmptyCart"><input type="submit" value="Empty cart" /></a>
+
         break;
     }
 

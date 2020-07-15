@@ -2,10 +2,16 @@
 
 
 
+
+
 @{ ViewData["Title"] = "All Products"; }
+
+
 
 <html lang="en">
 <head>
+
+
 
 
     <title>Group 2 Project</title>
@@ -18,10 +24,16 @@
 
 
 
+
+
     <title>Group2</title>
+
+
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
 
 
     <!-- Main Stylesheet -->
@@ -29,26 +41,51 @@
     <link rel="stylesheet" href="~/themes/css/bootstrap.min.css">
 
 
+
+
     <link href="~/css/Custom.css" rel="stylesheet" />
+
+
 
 
 </head>
 <body>
 
+
+
     <h1></h1>
+
+
 
 
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
                 <div>
-                    @*<div class="panel-heading">BLACK FRIDAY DEAL</div>
-                        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>*@
+
                 </div>
             </div>
             <div class="col-sm-6">
+
+
+
+                <div class="form-group">
+
+
+
+                    <a asp-action="Create" class="btn-custom">Insert New Products</a>
+                </div>
+
+
+
+
+
+
+
+
                 <div class="panel panel-danger">
+
+
 
                     <table class="table" id="customers">
                         <thead>
@@ -67,7 +104,11 @@
                                 </th>
                                 <th>
 
+
+
                                 </th>
+
+
 
                             </tr>
                         </thead>
@@ -85,13 +126,17 @@
                         @Html.DisplayFor(modelItem => item.Category)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ProductImage)
+                        <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
                         <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@item.Id">Add To Cart</a>
+
+
+
+
 
 
 
@@ -102,16 +147,14 @@
 
 
 
-                    @*<div class="panel-heading">BLACK FRIDAY DEAL</div>
-                        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>*@
+
+
+
                 </div>
             </div>
             <div class="col-sm-3">
                 <div>
-                    @*<div class="panel-heading">BLACK FRIDAY DEAL</div>
-                        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>*@
+
                 </div>
             </div>
         </div>
@@ -119,9 +162,11 @@
     <br>
 
 
-    <p>
-        <a asp-action="Create">Insert New Products</a>
-    </p>
+
+
+
+
+
 
 </body>
 </html>

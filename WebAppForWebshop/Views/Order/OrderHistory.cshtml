@@ -1,5 +1,32 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model WebAppForWebshop.Models.OrderHistory
+   
+ <div>
+        
+        @if (Model != null)
+        {
+            if (Model.finalHistoryList != null)
+            {
+
+
+        <table>
+            <tr><th>Order</th><th>Date</th><th>Customer</th><th>Username</th><th>Delivery address</th><th>Total Price</th><th>Click</th></tr>
+            @foreach (var item in Model.finalHistoryList)
+            {
+
+                    <tr>
+                        <td>@item.OrderId</td>
+                        <td>@item.OrderDate</td>
+                        <td>@item.CustomerId</td>
+                        <td>@item.CustomerUsername</td>
+                        <td>@item.DeliveryAddress</td>
+                        <td>@item.TotalPrice</td>
+                        <td>@Html.ActionLink("MANAGE", "ManageOrder", "Home", new { id = item.OrderId }, new { @class = "btn-main" })</td>
+                    </tr>
+
+
+            }
+            
+        </table>
+            }
+        }
+    </div>
