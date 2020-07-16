@@ -52,21 +52,31 @@
 
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><partial name="_LoginPartial" /></a></li>
+                    @*<li><a href="#"><partial name="_LoginPartial" /></a></li>*@
+
+                    <li class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                <li class=" nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Create">Create</a>
+                </li>
+
+                                <li class=" nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role Overview</a>
+                                </li>}
+
+                        </ul>
+                    </li>
+
                     <li class="nav-item">
 
-                        @*<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                            <img class="media-object" src="images/cart.jpg" alt="image" />*@
 
                         <a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="Index"> <img class="media-object" src="images/cart.png" alt="image" /></a>
-                        @*<a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="Index">Cart</a>*@
 
                     </li>
-                    @*<li><a href="#"> Cart</a></li>*@
-
-
-
-
 
                 </ul>
 

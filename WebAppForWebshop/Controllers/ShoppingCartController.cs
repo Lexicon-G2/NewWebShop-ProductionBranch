@@ -138,8 +138,8 @@ namespace WebAppForWebshop.Controllers
 
 
 
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Products");
+            //return RedirectToAction("Index");
             //return View();
         }
 
