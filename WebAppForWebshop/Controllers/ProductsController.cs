@@ -175,7 +175,13 @@ namespace WebAppForWebshop.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        public IActionResult Filter(string category)
+        {
+            if (category == "Reset")
+                return RedirectToAction("Index");
+            else
+                return View("Index", _context.Products.Where(x => x.Category == category));
+        }
 
         private bool ProductsExists(int id)
         {

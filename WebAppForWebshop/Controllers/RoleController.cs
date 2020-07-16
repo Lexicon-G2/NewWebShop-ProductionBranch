@@ -11,6 +11,7 @@ using WebAppForWebshop.Models;
 
 namespace WebAppForWebshop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
 
@@ -30,7 +31,7 @@ namespace WebAppForWebshop.Controllers
             this.db = db;
         }
 
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         public ViewResult Index() => View(roleManager.Roles);
         [Authorize]
         public IActionResult Create() => View();

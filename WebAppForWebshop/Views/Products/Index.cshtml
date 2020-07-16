@@ -51,7 +51,16 @@
 </head>
 <body>
 
+    <form asp-action="Filter">
+        _
+        <input type="submit" name="Category" value="Reset" />
+        <input type="submit" name="Category" value="Fruit" />
+        <input type="submit" name="Category" value="devices" />
+        <input type="submit" name="Category" value="Pets" />
 
+
+
+    </form>
 
     <h1></h1>
 
@@ -115,24 +124,24 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category)
-                    </td>
-                    <td>
-                        <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@item.Id">Add To Cart</a>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Category)
+                                    </td>
+                                    <td>
+                                        <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                                        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@item.Id">Add To Cart</a>
 
 
 
@@ -140,8 +149,9 @@
 
 
 
-                    </td>
-                </tr>}
+                                    </td>
+                                </tr>
+}
                         </tbody>
                     </table>
 

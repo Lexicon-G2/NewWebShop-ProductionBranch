@@ -31,7 +31,7 @@ namespace WebAppForWebshop.Controllers
             ApplicationUser user = await userManager.FindByEmailAsync("SUPERADMIN@ADMIN");
             if(user != null)
             {
-               var result = await userManager.AddToRoleAsync(user, "SuperAdmin");
+               var result = await userManager.AddToRoleAsync(user, "Admin");
             }
             await db.SaveChangesAsync();
             return View("Index");
