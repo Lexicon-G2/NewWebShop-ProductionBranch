@@ -35,7 +35,8 @@ namespace WebAppForWebshop.Controllers
         public ViewResult Index() => View(roleManager.Roles);
         [Authorize]
         public IActionResult Create() => View();
-        [Authorize]
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create([Required] string name)
         {
@@ -49,7 +50,7 @@ namespace WebAppForWebshop.Controllers
             }
             return View(name);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
