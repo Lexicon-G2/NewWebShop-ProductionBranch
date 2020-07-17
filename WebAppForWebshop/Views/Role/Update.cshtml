@@ -1,51 +1,108 @@
 ﻿@model RoleEdit
 
-<h1 class="bg-info text-white">Update Role</h1>
-<a asp-action="Index" class="btn btn-secondary">Back</a>
-<div asp-validation-summary="All" class="text-danger"></div>
 
-<form method="post">
-    <input type="hidden" name="roleName" value="@Model.Role.Name" />
-    <input type="hidden" name="roleId" value="@Model.Role.Id" />
+<h1>@ViewData["Title"]</h1>
 
-    <h2 class="bg-info p-1 text-white">Add To @Model.Role.Name</h2>
-    <table class="table table-bordered table-sm">
-        @if (Model.NonMembers.Count() == 0)
-        {
-            <tr><td colspan="2">All Users Are Members</td></tr>
-        }
-        else
-        {
-            @foreach (ApplicationUser user in Model.NonMembers)
-            {
-                <tr>
-                    <td>@user.UserName</td>
-                    <td>
-                        <input type="checkbox" name="AddIds" value="@user.Id">
-                    </td>
-                </tr>
-            }
-        }
-    </table>
+<html lang="en">
+<head>
+    <title>Group 2 Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <h2 class="bg-info p-1 text-white">Remove From @Model.Role.Name</h2>
-    <table class="table table-bordered table-sm">
-        @if (Model.Members.Count() == 0)
-        {
-            <tr><td colspan="2">No Users Are Members</td></tr>
-        }
-        else
-        {
-            @foreach (ApplicationUser user in Model.Members)
-            {
-                <tr>
-                    <td>@user.UserName</td>
-                    <td>
-                        <input type="checkbox" name="DeleteIds" value="@user.Id">
-                    </td>
-                </tr>
-            }
-        }
-    </table>
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+
+
+    <title>Group2</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/themes/css/style.css">
+    <link rel="stylesheet" href="~/themes/css/bootstrap.min.css">
+
+
+    <link href="~/css/Custom.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+
+
+            <section>
+                <h2 >Update Role</h2>
+                <a asp-action="Index" class="btn btn-sm btn-primary">Back</a>
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form method="post">
+                    <input type="hidden" name="roleName" value="@Model.Role.Name" />
+                    <input type="hidden" name="roleId" value="@Model.Role.Id" />
+
+                    <h4>Add To @Model.Role.Name</h4>
+                    <table class="table table-bordered table-sm">
+                        @if (Model.NonMembers.Count() == 0)
+                        {
+                            <tr><td colspan="2">All Users Are Members</td></tr>
+                        }
+                        else
+                        {
+                            @foreach (ApplicationUser user in Model.NonMembers)
+                            {
+                                <tr>
+                                    <td>@user.UserName</td>
+                                    <td>
+                                        <input type="checkbox" name="AddIds" value="@user.Id">
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>
+
+                    <h4>Remove From @Model.Role.Name</h4>
+                    <table class="table table-bordered table-sm">
+                        @if (Model.Members.Count() == 0)
+                        {
+                            <tr><td colspan="2">No Users Are Members</td></tr>
+                        }
+                        else
+                        {
+                            @foreach (ApplicationUser user in Model.Members)
+                            {
+                                <tr>
+                                    <td>@user.UserName</td>
+                                    <td>
+                                        <input type="checkbox" name="DeleteIds" value="@user.Id">
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                    <button type="submit" class="btn-main">Save</button>
+                </form>
+            </section>
+
+
+        </div>
+        <div class="col-md-3">
+        </div>
+
+    </div>
+
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+</html>
+
+
+

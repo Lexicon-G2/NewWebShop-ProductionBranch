@@ -1,42 +1,125 @@
 ﻿@model WebAppForWebshop.Models.ApplicationUser
 
-<div>
-    @if (Model != null)
-    {
-        @if (Model.userList != null)
-        {
-            <table>
-                <tr><th>Username</th><th>UserId</th><th>Click</th></tr>
-                @foreach (var user in Model.userList)
-                {
-            <tr>
-                <td>@user.UserName</td>
-                <td>@user.Id</td>
-                <td>@Html.ActionLink("MANAGE", "ManageUser", "Home", new {id = user.Id }, new { @class = "btn-main" })</td>
-            </tr>
-            
-        }
-                </table>
-            }
-    }
+
+
+
+
+@{ ViewData["Title"] = "All Products"; }
+
+<html lang="en">
+<head>
+    <title>Group 2 Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Group2</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/themes/css/style.css">
+    <link rel="stylesheet" href="~/themes/css/bootstrap.min.css">
+
+    <link href="~/css/Custom.css" rel="stylesheet" />
+
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-9">
+            <h2>User Details</h2>
+            <section>
+                <form action="AddUser" method="POST">
+                    <label for="username">
+                        <input type="text" id="username" name="username" value="email username..." />
+                    </label>
+                    <label for="pword">
+                        <input type="text" id="pword" name="pword" value="password..." />
+                    </label>
+                    <label for="fname">
+                        <input type="text" id=" fname" name="fname" value="firstname.." />
+                    </label>
+                    <label for=" lname">
+                        <input type="text" id=" lname" name="lname" value="lastname.." />
+                    </label>
+                    <label for=" adr">
+                        <input type="text" id="adr" name="adr" value="Address.." />
+                    </label>
+                    @*<input type="submit" id=" adduser" name="adduser" value="Add User" />*@
+                    <input type="submit" class="btn btn-sm btn-primary" id=" adduser" name="adduser" value="Add User" />
+                </form>
+            </section>
+
+
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+
     </div>
-<div>
-    <form action="AddUser" method="POST">
-        <label for="username">
-            <input type="text" id="username" name="username" value="email username..." />
-        </label>
-        <label for="pword">
-            <input type="text" id="pword" name="pword" value="password..."/>
-        </label>
-        <label for="fname">
-            <input type="text" id=" fname" name="fname" value="firstname.." />
-        </label>
-        <label for=" lname">
-            <input type="text" id=" lname" name="lname" value="lastname.." />
-        </label>
-        <label for=" adr">
-            <input type="text" id="adr" name="adr" value="Address.." />
-        </label>
-        <input type="submit" id=" adduser" name="adduser" value="Add User" />
-    </form>
-</div>
+    <br>
+
+    <div class="container">
+
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-8">
+
+
+
+
+            <div class="panel panel-danger">
+
+
+
+                <table class="table" id="customers">
+
+                    @if (Model != null)
+                    {
+                        @if (Model.userList != null)
+                        {
+                            <table class="table" id="customers">
+                                <tr><th>Username</th><th>UserId</th><th></th></tr>
+                                @foreach (var user in Model.userList)
+                                {
+                                    <tr>
+                                        <td>@user.UserName</td>
+                                        <td>@user.Id</td>
+                                        <td>@Html.ActionLink("MANAGE", "ManageUser", "Home", new { id = user.Id }, new { @class = "btn-main" })</td>
+                                    </tr>
+
+                                }
+                            </table>
+                        }
+                    }
+
+                </table>
+
+
+
+
+
+
+            </div>
+            <div class="col-sm-2">
+                <div>
+
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+
+
+
+

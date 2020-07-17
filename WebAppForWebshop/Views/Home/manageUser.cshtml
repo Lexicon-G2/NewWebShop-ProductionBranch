@@ -4,39 +4,105 @@
 *@
 @{
 }
-<h1>User Management Page</h1>
 
 
 
-    @if (Model != null)
-    {
-        <div>
-            <p>Username: @Model.UserName</p> <p>ID: @Model.Id</p> 
-            <form asp-controller="Home" asp-action="UpdateUser" method="POST">
-                <label for="uid">
-                    <input type="hidden" id="uid" name="uid" value="@Model.Id" />
-                </label>
-                <label for="fname">
-                    <input type="text" id=" fname" name="fname" value="@Model.FirstName" />
-                </label>
-                <label for="lname">
-                    <input type="text" id=" lname" name="lname" value="@Model.LastName" />
-                </label>
-                <label for="adr">
-                    <input type="text" id="adr" name="adr" value="@Model.Address" />
-                </label>
-                <input type="submit" id=" UpdateUser" name="UpdateUser" value="Update User" />
-            </form>
-            @*<form action="UpdateUser" method="POST">
-                    <input type="hidden" id="uid" name="uid" value="@Model.Id" />
-                    <label for="username">
-                        <input type="text" id="username" name="username" value="@Model.UserName" />
-                    </label>
-                    <input type="submit" id="upduser" name="upduser" value="UPDATE" />
-                </form>*@
+<html lang="en">
+<head>
+    <title>Group 2 Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+    <title>Group2</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/themes/css/style.css">
+    <link rel="stylesheet" href="~/themes/css/bootstrap.min.css">
+
+
+    <link href="~/css/Custom.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+    <div class="row">
+        <div class="col-md-3">
         </div>
-        <div>
-            @Html.ActionLink("DELETE", "RemoveUser", "Home", new { Model.Id }, new { @class = "btn btn-danger" })
-            @Html.ActionLink("Back", "User", "Home", new { @class = "btn-main" })        
+        <div class="col-md-6">
+
+            <h2>User Management Page</h2>
+            <br>
+            <section>
+
+
+                @if (Model != null)
+                {
+                    <div>
+                        <h5>Username: @Model.UserName</h5> <h5>ID: @Model.Id</h5>
+                        <br>
+                        <form asp-controller="Home" asp-action="UpdateUser" method="POST">
+                            <label for="uid">
+                                <input type="hidden" id="uid" name="uid" value="@Model.Id" />
+                            </label>
+                            <label for="fname">
+                                <input type="text" id=" fname" name="fname" value="@Model.FirstName" />
+                            </label>
+                            <label for="lname">
+                                <input type="text" id=" lname" name="lname" value="@Model.LastName" />
+                            </label>
+                            <label for="adr">
+                                <input type="text" id="adr" name="adr" value="@Model.Address" />
+                            </label>
+                            <input type="submit" id=" UpdateUser" name="UpdateUser" class="btn btn-success" value="Update User" />
+                        </form>
+                        @*<form action="UpdateUser" method="POST">
+                        <input type="hidden" id="uid" name="uid" value="@Model.Id" />
+                        <label for="username">
+                            <input type="text" id="username" name="username" value="@Model.UserName" />
+                        </label>
+                        <input type="submit" id="upduser" name="upduser" value="UPDATE" />
+                    </form>*@
+                    </div>
+                    <div>
+                        @Html.ActionLink("DELETE", "RemoveUser", "Home", new { Model.Id }, new { @class = "btn btn-danger" })
+
+
+                        @*@Html.ActionLink("Back", "User", "Home", new { @class = "btn btn-danger" })*@
+
+
+                        <a asp-action="User" class="btn btn-primary">Back</a>
+
+                    </div>
+                }
+
+            </section>
+
+
         </div>
+        <div class="col-md-3">
+        </div>
+
+    </div>
+
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
     }
+</body>
+</html>
+
+
+
+
+

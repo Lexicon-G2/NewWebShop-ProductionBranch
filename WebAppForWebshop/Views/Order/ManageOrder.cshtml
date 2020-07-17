@@ -1,41 +1,100 @@
 ﻿@model WebAppForWebshop.Models.SpecificOrderHistory
-<h1>TEST</h1>
 
-@if(Model != null)
-{
 
-    if(Model.listSpecificOrderHistory != null)
-    {<table>
-         
-             @foreach (var item in Model.listSpecificOrderHistory)
-             {<tr>
-                <th>Order</th>
-                <th>Date</th>
-                <th>Customer</th>
-                <th>CustomerID</th>
-                <th>Delivery Address</th>
-                <th>Total Price of Order</th>
-                <th></th>
-            </tr>
-              <tr>
-                  <td>@item.OrderId</td>
-                  <td>@item.OrderDate</td>
-                  <td>@item.CustomerUsername</td>
-                  <td>@item.CustomerId</td>
-                  <td>@item.DeliveryAddress</td>
-                  <td>@item.TotalPrice</td>
-                  <td>@Html.ActionLink("DELETE ORDER", "RemoveWholeOrder", "Order", new { orderid = item.OrderId }, new { @class = "btn-main" })</td>
-              </tr>
-                 break;
-             }
 
-         
-    @foreach (var item in Model.listSpecificOrderHistory)
-    {
+<html lang="en">
+<head>
+    <title>Group 2 Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-     <tr> <td><img src="@item.ProductImage" /></td> <td>@item.ProductId</td>   <td>@item.ProductName </td> <td>@item.PricePerItem Kr</td>    <td>@Html.ActionLink("DELETE", "RemoveProductFromOrder", "Order", new { orefid = item.orefId, orderid = item.OrderId }, new { @class = "btn-main" })   </td>     </tr>
 
+
+    <title>Group2</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/themes/css/style.css">
+    <link rel="stylesheet" href="~/themes/css/bootstrap.min.css">
+
+
+    <link href="~/css/Custom.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+
+            <h2>Management your Order</h2>
+            <br />
+            <section>
+
+                @if (Model != null)
+                {
+
+                    if (Model.listSpecificOrderHistory != null)
+                    {<table class="table" id="customers">
+
+                            @foreach (var item in Model.listSpecificOrderHistory)
+                            {
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>CustomerID</th>
+                                    <th>Delivery Address</th>
+                                    <th>Total Price of Order</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td>@item.OrderId</td>
+                                    <td>@item.OrderDate</td>
+                                    <td>@item.CustomerUsername</td>
+                                    <td>@item.CustomerId</td>
+                                    <td>@item.DeliveryAddress</td>
+                                    <td>@item.TotalPrice</td>
+                                    <td>@Html.ActionLink("DELETE ORDER", "RemoveWholeOrder", "Order", new { orderid = item.OrderId }, new { @class = "btn-main" })</td>
+                                </tr>
+                                break;
+                            }
+
+
+                            @foreach (var item in Model.listSpecificOrderHistory)
+                            {
+
+                                <tr> <td><img src="@item.ProductImage" /></td> <td>@item.ProductId</td>   <td>@item.ProductName </td> <td>@item.PricePerItem Kr</td>  <td></td> <td></td> <td>@Html.ActionLink("DELETE", "RemoveProductFromOrder", "Order", new { orefid = item.orefId, orderid = item.OrderId }, new { @class = "btn-main" })   </td>     </tr>
+
+                            }
+                        </table>
+                    }
+                }
+            </section>
+
+
+        </div>
+        <div class="col-md-3">
+        </div>
+
+    </div>
+
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
     }
-</table>
-    }
-}
+</body>
+</html>
+
+
+
+
