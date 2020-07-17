@@ -298,11 +298,93 @@ namespace WebAppForWebshop.Controllers
                 .Select(o => o.Id).ToList();
             _db.OrderReferences.RemoveRange(_db.OrderReferences.Where(r => removeQuery.Contains(r.Id)));
 
+            
+
             //_db.OrderReferences.RemoveAll((x) => removeQuery.Contains(x.Id);
             _db.Orders.Remove(item);
             await _db.SaveChangesAsync();
 
             return RedirectToAction("OrderHistory");
+        }
+
+        public async Task<IActionResult> ShoppingHistory()
+        {
+            OrderHistory model = new OrderHistory();
+            //var currentUser = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var currentUser =  _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            model.listOrderHistory = (from oref in _db.OrderReferences
+                                      join order in _db.Orders on oref.OrderId.Id
+                                      equals order.Id
+                                      join user in _db.Users on order.Customer.Id equals user.Id 
+                                      into Details
+                                      from m in Details.DefaultIfEmpty()
+                                      where order.Customer.Id == currentUser
+                                      select new OrderHistory
+                                      {
+                                          OrderId = oref.OrderId.Id,
+                                          CustomerId = m.Id,
+                                          CustomerUsername = m.UserName,
+                                          OrderDate = order.OrderDate,
+                                          TotalPrice = oref.Price
+                                      }).ToList();
+            //var ordersForUser = _db.Orders.Where(x => x.Customer.Id == currentUser);
+            foreach (var item in model.listOrderHistory)
+            {
+                var user1 = (ApplicationUser)await _db.Users.Where(x => x.Id == item.CustomerId).FirstOrDefaultAsync();
+                item.DeliveryAddress = user1.Address;
+
+            }
+
+            var tempo = new OrderHistory();
+
+            foreach (var item in model.listOrderHistory)
+            {
+                tempo = new OrderHistory()
+                {
+                    OrderId = item.OrderId,
+                    OrderDate = item.OrderDate,
+                    CustomerId = item.CustomerId,
+                    CustomerUsername = item.CustomerUsername,
+                    DeliveryAddress = item.DeliveryAddress,
+                    TotalPrice = item.TotalPrice
+                };
+
+                break;
+
+            }
+
+            //var temp = new OrderHistory();
+            //var temp = model.listOrderHistory.FirstOrDefault();
+            tempo.TotalPrice = tempo.TotalPrice - tempo.TotalPrice;
+            foreach (var item in model.listOrderHistory)
+            {
+
+                if (tempo.OrderId != item.OrderId)
+                {
+
+                    model.finalHistoryList.Add(tempo);
+                    tempo = new OrderHistory()
+                    {
+                        OrderId = item.OrderId,
+                        OrderDate = item.OrderDate,
+                        CustomerId = item.CustomerId,
+                        CustomerUsername = item.CustomerUsername,
+                        DeliveryAddress = item.DeliveryAddress,
+                        TotalPrice = item.TotalPrice
+                    };
+                }
+                else
+                {
+
+                    tempo.TotalPrice = tempo.TotalPrice + item.TotalPrice;
+                }
+
+            }
+            model.finalHistoryList.Add(tempo);
+
+            return View("OrderHistory", model);
+            //return View();
         }
 
     }
