@@ -101,12 +101,16 @@
 <div>
     @foreach (var item in Model)
     {
-        @Html.ActionLink("GO TO CHECKOUT", "Checkout", "Order", new {_CartId = item.CartId }, new { @class = "btn-main" })
+        @Html.ActionLink("GO TO CHECKOUT", "Checkout", "Order", new { _CartId = item.CartId }, new { @class = "btn-main" })
         @*@Html.ActionLink("GO TO CHECKOUT", "Checkout", "Order", new { item.CartId }, new { @class = "btn btn-danger" })*@
-
-        <a asp-action="EmptyCart"><input type="submit" value="Empty cart" /></a>
+        <br />
+        <br>
+        <a class="btn-main" asp-action="EmptyCart">Empty cart</a>
+        @*<a asp-action="Create" class="btn-custom">Insert New Products</a>*@
 
         break;
+
+
     }
 
 </div>

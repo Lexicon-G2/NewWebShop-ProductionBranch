@@ -1,19 +1,9 @@
 ﻿@model IEnumerable<WebAppForWebshop.Models.Products>
 
-
-
-
-
 @{ ViewData["Title"] = "All Products"; }
-
-
 
 <html lang="en">
 <head>
-
-
-
-
     <title>Group 2 Project</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,74 +12,51 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
-
-
-
     <title>Group2</title>
-
-
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-
-
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="~/themes/css/style.css">
     <link rel="stylesheet" href="~/themes/css/bootstrap.min.css">
 
-
-
-
     <link href="~/css/Custom.css" rel="stylesheet" />
-
-
-
 
 </head>
 <body>
-
-    <form asp-action="Filter">
-        _
-        <input type="submit" name="Category" value="Reset" />
-        <input type="submit" name="Category" value="Fruit" />
-        <input type="submit" name="Category" value="devices" />
-        <input type="submit" name="Category" value="Pets" />
-
-
-
-    </form>
-
-    <h1></h1>
-
-
-
-
     <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <div>
-
-                </div>
+        
+            <div class="col-sm-2">
+                
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
+                
+                <div class="container">
+                    
+                        <div class="col-sm-4">
+                            <a asp-action="Create" class="btn btn-sm btn-primary">Insert New Products</a>
+                        </div>
+
+                        <div class="col-sm-8">
+                           
+                            <form asp-action="Filter">
+
+                                <input type="submit" class="btn btn-sm btn-primary" name="Category" value="Reset" />
+                                <input type="submit" class="btn btn-sm btn-primary" name="Category" value="Fruit" />
+                                <input type="submit" class="btn btn-sm btn-primary" name="Category" value="devices" />
+                                <input type="submit" class="btn btn-sm btn-primary" name="Category" value="Pets" />
+
+                            </form>
 
 
 
-                <div class="form-group">
+                        </div>
 
+                       
 
-
-                    <a asp-action="Create" class="btn-custom">Insert New Products</a>
+             
                 </div>
-
-
-
-
-
-
 
 
                 <div class="panel panel-danger">
@@ -113,11 +80,7 @@
                                 </th>
                                 <th>
 
-
-
                                 </th>
-
-
 
                             </tr>
                         </thead>
@@ -144,39 +107,20 @@
                                         <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@item.Id">Add To Cart</a>
 
 
-
-
-
-
-
                                     </td>
                                 </tr>
-}
+                            }
                         </tbody>
                     </table>
 
 
-
-
-
-
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div>
+                    <div class="col-sm-2">
+                        <div>
 
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <br>
-
-
-
-
-
-
-
-
 </body>
 </html>

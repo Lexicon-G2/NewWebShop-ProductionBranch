@@ -1,32 +1,96 @@
 ﻿@model WebAppForWebshop.Models.OrderHistory
-   
- <div>
-        
-        @if (Model != null)
-        {
-            if (Model.finalHistoryList != null)
-            {
 
 
-        <table>
-            <tr><th>Order</th><th>Date</th><th>Customer</th><th>Username</th><th>Delivery address</th><th>Total Price</th><th>Click</th></tr>
-            @foreach (var item in Model.finalHistoryList)
-            {
 
-                    <tr>
-                        <td>@item.OrderId</td>
-                        <td>@item.OrderDate</td>
-                        <td>@item.CustomerId</td>
-                        <td>@item.CustomerUsername</td>
-                        <td>@item.DeliveryAddress</td>
-                        <td>@item.TotalPrice</td>
-                        <td>@Html.ActionLink("MANAGE", "ManageOrder", "Order", new { id = item.OrderId }, new { @class = "btn-main" })</td>
-                    </tr>
+<html lang="en">
+<head>
+    <title>Group 2 Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-            }
+
+    <title>Group2</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/themes/css/style.css">
+    <link rel="stylesheet" href="~/themes/css/bootstrap.min.css">
+
+
+    <link href="~/css/Custom.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <h2>Order History</h2>
+            <br />
+            <section>
+                <div>
+
+                    @if (Model != null)
+                    {
+                        if (Model.finalHistoryList != null)
+                        {
+
+
+                            <table class="table" id="customers">
+                                <tr><th>Order</th><th>Date</th><th>Customer</th><th>Username</th><th>Delivery address</th><th>Total Price</th><th>Click</th></tr>
+                                @foreach (var item in Model.finalHistoryList)
+                                {
+
+                                    <tr>
+                                        <td>@item.OrderId</td>
+                                        <td>@item.OrderDate</td>
+                                        <td>@item.CustomerId</td>
+                                        <td>@item.CustomerUsername</td>
+                                        <td>@item.DeliveryAddress</td>
+                                        <td>@item.TotalPrice</td>
+                                        <td>@Html.ActionLink("MANAGE", "ManageOrder", "Order", new { id = item.OrderId }, new { @class = "btn-main" })</td>
+                                    </tr>
+
+
+                                }
+
+                            </table>
+
+                        }
+                    }
+                </div>
+
+                <br />
+
+
+                <div>@Html.ActionLink("SHOPPING HISTORY", "ShoppingHistory", "Order", new { @class = "btn-main" })</div>
             
-        </table>
-            }
-        }
+            </section>
+
+
+        </div>
+        <div class="col-md-3">
+        </div>
+
     </div>
+
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+</html>
+
+
+
+

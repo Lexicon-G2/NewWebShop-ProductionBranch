@@ -31,53 +31,76 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Logo</a>
+
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index"> <img class="media-object" src="images/Logo.png" alt="image" /></a>
+
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    @*<li class="active">*@
+                    <li>
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
 
                     @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Views" asp-page="/Products/Index">Products</a>
-                        </li>*@
+            <a class="nav-link text-dark" asp-area="Views" asp-page="/Products/Index">Products</a>
+        </li>*@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
                     </li>
-                    <li><a href="#">Deals</a></li>
-                    <li><a href="#">Stores</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
 
+                    <li class="dropdown dropdown-slide">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">User <span class="tf-ion-ios-arrow-down"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Home" asp-action="User">User</a></li>
+                            <li> <a asp-controller="Order" asp-action="OrderHistory">Orders History</a></li>
 
-                <ul class="nav navbar-nav navbar-right">
-                    @*<li><a href="#"><partial name="_LoginPartial" /></a></li>*@
+                          
 
-                    <li class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav flex-grow-1">
-
-                            @if (User.IsInRole("Admin"))
-                            {
-                <li class=" nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Create">Create</a>
-                </li>
-
-                                <li class=" nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role Overview</a>
-                                </li>}
 
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                   
+                   
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                
 
+
+                
+
+                <ul class="nav navbar-nav navbar-right">
+                    @*<li><a href="#"><partial name="_LoginPartial" /></a></li>*@
+
+
+                    <li class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        
+                        <ul class="nav navbar-nav">
+                            <li class=" nav-item">
+                                <partial name="_LoginPartial" />
+                                </li>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                <li class=" nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Create">Create Role</a>
+                                </li>
+
+                                <li class=" nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role Overview</a>
+                                </li>
+
+                            }
+
+                            </ul>
+                    </li>
+
+
+                    <li class="nav-item">
 
                         <a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="Index"> <img class="media-object" src="images/cart.png" alt="image" /></a>
 
                     </li>
-
                 </ul>
 
 
@@ -90,10 +113,7 @@
 
 
     <div class="jumbotron">
-        <div class="container text-center">
-            <h1>Online Store</h1>
-            <p>Mission, Vission & Values</p>
-        </div>
+        <img class="media-object" src="images/banner.jpg" alt="image" />
     </div>
 
     <div class="container">

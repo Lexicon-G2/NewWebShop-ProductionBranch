@@ -2,7 +2,7 @@
 }
 /* Remove the navbar's default rounded borders and increase the bottom margin */
 .navbar {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     border-radius: 0;
 }
 
@@ -71,7 +71,7 @@ customers th {
 
 
 .navbar {
-    margin-bottom: 50px;
+    margin-bottom: 15px;
     border-radius: 0;
 }
 
@@ -107,7 +107,7 @@ button {
     background-color: #4CAF50;
     color: #000000;
     padding: 15px 32px;
-    margin: 8px 0;
+    margin: 5px 0;
     border: none;
     cursor: pointer;
     width: 50%;
@@ -126,7 +126,8 @@ button {
     cursor: pointer;
     width: 100%;
 }*/
-.btn-main, .btn-solid-border, .btn-transparent, .btn-small {
+
+.btn-mainn{
     background-color: #4CAF50;
     border: none;
     color: #000000;
@@ -134,7 +135,20 @@ button {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 6px;
+    width: 100%;
+    cursor: pointer;
+   
+}
+.btn-main, .btn-solid-border, .btn-transparent, .btn-small {
+    background-color: #4CAF50;
+    border: none;
+    color: #000000;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
     width: 100%;
     cursor: pointer;
     /* color: #fff;*/
