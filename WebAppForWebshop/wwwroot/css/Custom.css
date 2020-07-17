@@ -186,3 +186,15 @@ p-custom {
     font-size: 10px;
     color: #006400;
 }
+
+a-login{
+    padding-bottom: 10px;
+    font-size: 12px;
+        color: black;
+}
+
+a-register{
+    padding-top: 10px;
+    font-size: 12px;
+    color:black;
+}
