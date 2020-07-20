@@ -178,7 +178,10 @@ p {
 
 
 
-
+.navbar-nav > li > a {
+    padding-bottom:4px;
+    padding-top:10px;
+}
 
 p-custom {
     text-align: right;

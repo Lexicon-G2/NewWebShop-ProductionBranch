@@ -20,6 +20,7 @@ using WebAppForWebshop.Models;
 
 namespace WebAppForWebshop.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext _db;

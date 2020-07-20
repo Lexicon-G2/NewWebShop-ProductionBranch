@@ -53,7 +53,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">User <span class="tf-ion-ios-arrow-down"></span></a>
                         <ul class="dropdown-menu">
                             <li><a asp-controller="Home" asp-action="User">User</a></li>
-                            <li> <a asp-controller="Order" asp-action="OrderHistory">Orders History</a></li>
+                          @if (User.IsInRole("Admin"))
+                          {  <li> <a asp-controller="Order" asp-action="OrderHistory">Orders History</a></li>}
 
                           
 

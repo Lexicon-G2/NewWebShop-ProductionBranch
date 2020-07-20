@@ -35,7 +35,8 @@
                 <div class="container">
                     
                         <div class="col-sm-4">
-                            <a asp-action="Create" class="btn btn-sm btn-primary">Insert New Products</a>
+                          @if (User.IsInRole("Admin"))
+                          {  <a asp-action="Create" class="btn btn-sm btn-primary">Insert New Products</a>}
                         </div>
 
                         <div class="col-sm-8">
@@ -101,9 +102,11 @@
                                         <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        @if (User.IsInRole("Admin"))
+                                        {<a asp-action="Edit" asp-route-id="@item.Id">Edit</a>} |
                                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                                        @if (User.IsInRole("Admin"))
+                                        { <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>  }  |
                                         <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@item.Id">Add To Cart</a>
 
 

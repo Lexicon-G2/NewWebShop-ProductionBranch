@@ -4251,7 +4251,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
         .nav > li > a {
             position: relative;
             display: block;
-            padding: 10px 15px
+            padding: 5px 5px
         }
 
             .nav > li > a:hover, .nav > li > a:focus {
