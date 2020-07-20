@@ -4251,7 +4251,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
         .nav > li > a {
             position: relative;
             display: block;
-            padding: 10px 15px
+            padding: 5px 5px
         }
 
             .nav > li > a:hover, .nav > li > a:focus {
@@ -4460,7 +4460,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 .navbar {
     position: relative;
     min-height: 60px;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     border: 1px solid transparent
 }
 
@@ -4671,8 +4671,8 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
         }
 
             .navbar-nav > li > a {
-                padding-top: 20px;
-                padding-bottom: 20px
+                padding-top: 7px;
+                padding-bottom: 7px
             }
 }
 

@@ -1962,7 +1962,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 .widget.widget-latest-post .media .media-object {
   width: 150px;
-  height: auto;
+  height: 30px;
 }
 
 .widget.widget-latest-post .media .media-heading a {

@@ -55,7 +55,7 @@
                                     <th>CustomerID</th>
                                     <th>Delivery Address</th>
                                     <th>Total Price of Order</th>
-                                    <th></th>
+                                    @if(User.IsInRole("Admin")){<th></th>}
                                 </tr>
                                 <tr>
                                     <td>@item.OrderId</td>
@@ -64,7 +64,8 @@
                                     <td>@item.CustomerId</td>
                                     <td>@item.DeliveryAddress</td>
                                     <td>@item.TotalPrice</td>
-                                    <td>@Html.ActionLink("DELETE ORDER", "RemoveWholeOrder", "Order", new { orderid = item.OrderId }, new { @class = "btn-main" })</td>
+                                   @if (User.IsInRole("Admin"))
+                                   { <td>@Html.ActionLink("DELETE ORDER", "RemoveWholeOrder", "Order", new { orderid = item.OrderId }, new { @class = "btn btn-danger" })</td>}
                                 </tr>
                                 break;
                             }
@@ -73,7 +74,8 @@
                             @foreach (var item in Model.listSpecificOrderHistory)
                             {
 
-                                <tr> <td><img src="@item.ProductImage" /></td> <td>@item.ProductId</td>   <td>@item.ProductName </td> <td>@item.PricePerItem Kr</td>  <td></td> <td></td> <td>@Html.ActionLink("DELETE", "RemoveProductFromOrder", "Order", new { orefid = item.orefId, orderid = item.OrderId }, new { @class = "btn-main" })   </td>     </tr>
+                                <tr> <td><img src="@item.ProductImage" /></td> <td>@item.ProductId</td>   <td>@item.ProductName </td> <td>@item.PricePerItem Kr</td>  <td></td> <td></td> @if (User.IsInRole("Admin"))
+                                {<td>@Html.ActionLink("DELETE  ITEM", "RemoveProductFromOrder", "Order", new { orefid = item.orefId, orderid = item.OrderId }, new { @class = "btn btn-danger" })   </td>}     </tr>
 
                             }
                         </table>

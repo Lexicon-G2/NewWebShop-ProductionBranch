@@ -38,7 +38,7 @@
         <div class="col-sm-9">
             <h2>User Details</h2>
             <section>
-                <form action="AddUser" method="POST">
+            @if (User.IsInRole("Admin")) {     <form action="AddUser" method="POST">
                     <label for="username">
                         <input type="text" id="username" name="username" value="email username..." />
                     </label>
@@ -56,7 +56,7 @@
                     </label>
                     @*<input type="submit" id=" adduser" name="adduser" value="Add User" />*@
                     <input type="submit" class="btn btn-sm btn-primary" id=" adduser" name="adduser" value="Add User" />
-                </form>
+                </form>}
             </section>
 
 
@@ -88,28 +88,45 @@
                     {
                         @if (Model.userList != null)
                         {
-                            <table class="table" id="customers">
+                            @if (User.IsInRole("Admin"))
+                            {
+                    
+                        <tr><th>Username</th><th>UserId</th><th></th></tr>
+                        @foreach (var user in Model.userList)
+                        {
+                            <tr>
+                                <td>@user.UserName</td>
+                                <td>@user.Id</td>
+                                <td>@Html.ActionLink("MANAGE", "ManageUser", "Home", new { id = user.Id }, new { @class = "btn-main" })</td>
+                            </tr>
+
+                        }
+
+                        }
+                      
+                            @if (!User.IsInRole("Admin"))
+                            {
+
                                 <tr><th>Username</th><th>UserId</th><th></th></tr>
                                 @foreach (var user in Model.userList)
-                                {
+                                { @if(User.Identity.Name == user.UserName) { 
                                     <tr>
                                         <td>@user.UserName</td>
                                         <td>@user.Id</td>
                                         <td>@Html.ActionLink("MANAGE", "ManageUser", "Home", new { id = user.Id }, new { @class = "btn-main" })</td>
                                     </tr>
-
                                 }
-                            </table>
-                        }
-                    }
+                                }
 
+                            }
+
+                        }
+
+                    }
                 </table>
 
 
-
-
-
-
+                    
             </div>
             <div class="col-sm-2">
                 <div>

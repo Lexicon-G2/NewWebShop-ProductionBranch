@@ -43,16 +43,16 @@ namespace WebAppForWebshop.Controllers
             return View();
         }
 
-        public IActionResult Products()
-        {
+        //public IActionResult Products()
+        //{
            
-            return View();
-        }
-
+        //    return View();
+        //}
+        [Authorize]
         public IActionResult User()
         {//LIST ALL USERS
             ApplicationUser model = new ApplicationUser();
-            // trying to place IdentityUser -> applicationUser
+            
             model.userList = db.Users.ToList();
             return View("User", model);
         }
@@ -94,8 +94,7 @@ namespace WebAppForWebshop.Controllers
 
         [HttpPost, ActionName("UpdateUser")]
         public async Task<IActionResult> UpdateUser(string uid, string fname, string lname, string adr)
-        {//ADD SPECIFIC USER
-         // var user = new ApplicationUser();
+        {
             var userStore = new UserStore<ApplicationUser>(db);
             var user = (ApplicationUser)await db.Users.Where(x => x.Id == uid).FirstOrDefaultAsync();
             user.FirstName = fname;
@@ -106,21 +105,11 @@ namespace WebAppForWebshop.Controllers
             await userStore.UpdateAsync(user);
             await db.SaveChangesAsync();
             ViewBag.Test = fname + " ---" + lname + " ---" + adr + " ---" + uid;
-          //  user = (ApplicationUser)db.Users.Where(x => x.Id == uid).FirstOrDefault();
+         
             return View("manageUser", user);
         }
 
-        //[HttpPost]
-        //public IActionResult UpdateUser(string uid, string username)
-        //{
-        //    //var user = new IdentityUser();
-        //   var user = db.Users.Where(x => x.Id == uid).FirstOrDefault();
-        //    user.UserName = username;
-        //    user.NormalizedUserName = username.ToUpper();
-        //    db.Users.Update(user);
-        //    db.SaveChanges();
-        //    return View("manageUser", user);
-        //}
+        
 
         public IActionResult RemoveUser(string id)
         {//REMOVE SPECIFIC USER

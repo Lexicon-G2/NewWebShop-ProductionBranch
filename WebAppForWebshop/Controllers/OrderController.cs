@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,7 @@ using WebAppForWebshop.Models;
 
 namespace WebAppForWebshop.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -127,50 +129,8 @@ namespace WebAppForWebshop.Controllers
             return View(model.listForCartAndProduct);
         }
 
-        /*
         
-            model.listForCartAndProduct = (from cart in _db.ShoppingCartItems
-                                           join product in _db.Products on cart.ProductId equals product.Id
-                                           into Details
-                                           from m in Details.DefaultIfEmpty()
-                                           select new CartAndProduct
-                                           {
-
-
-         * var result = from t1 in someContext.Table1
-              join t2 in someContext.Table2 on 
-        new { SomeID = t1.SomeID, SomeName = someName} equals 
-                          new { SomeID = t2.SomeID, SomeName = t2.SomeName}
-        */
-
-        //public IActionResult OrderHistory()
-        //{
-        //    OrderHistory model = new OrderHistory();
-        //    model.listOrderHistory = (from user in _db.Users
-        //                              join order in _db.Orders
-        //                              on user.Id equals order.Customer.Id
-        //                              into Details
-        //                              from m in Details.DefaultIfEmpty()
-        //                              select new OrderHistory
-        //                              {
-
-        //                              }).ToList();
-
-        //    return View();
-        //}
-
-        //public IActionResult OrderHistory1()
-        //{
-        //    OrderHistory model = new OrderHistory();
-        //    model.listOrderHistory = (from order in _db.Orders
-        //                              join o in _db.OrderReferences
-        //                              on new { id = order.Id } equals new {id = o.OrderId }
-        //                              into j
-        //                              select new OrderHistory { }).ToList();
-
-        //    return View("OrderHistory");
-        //}
-
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> OrderHistory()
         {
             OrderHistory model = new OrderHistory();
