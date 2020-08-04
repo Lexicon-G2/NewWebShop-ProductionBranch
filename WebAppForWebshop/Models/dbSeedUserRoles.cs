@@ -40,9 +40,9 @@ namespace WebAppForWebshop.Models
 
             var roleStore = new RoleStore<IdentityRole>(_context);
 
-            if (!_context.Roles.Any(r => r.Name == "SuperAdmin"))
+            if (!_context.Roles.Any(r => r.Name == "Admin"))
             {
-                await roleStore.CreateAsync(new IdentityRole { Name = "SuperAdmin", NormalizedName = "SUPERADMIN" });
+                await roleStore.CreateAsync(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
             }
             if (!_context.Roles.Any(r => r.Name == "Customer"))
             {

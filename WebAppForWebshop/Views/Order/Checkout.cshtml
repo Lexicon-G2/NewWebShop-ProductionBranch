@@ -180,7 +180,8 @@
                     @Html.ActionLink("Confirm Purchase", "Receipt", "Order", new { item.CartId }, new { @class = "btn-main" })}*@
                 <br />
                 <br>
-                <button>Back to Shopping Cart</button>
+                @Html.ActionLink("Back to Shopping Cart", "Index", "ShoppingCart", new{ @class = "btn-main"})
+               @* <button asp-controller="ShoppingCart" asp-action="Index" >Back to Shopping Cart</button>*@
 
 
             </div>
